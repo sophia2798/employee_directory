@@ -1,4 +1,18 @@
 .form-group {
     display: flex;
     flex-direction: row;
+    margin-bottom: 0 !important
 }
+
+form {
+    margin: 0 auto;
+}
+
+#see-all {
+    margin-left: 1rem;
+}
+
+#search {
+    margin-left: 0.5rem;
+}
+

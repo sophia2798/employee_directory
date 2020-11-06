@@ -1,0 +1,21 @@
+.lead {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: white;
+}
+
+#jumbo-header {
+    font-weight: bold;
+    font-size: 3.3rem;
+    color: white;
+}
+
+hr {
+    border-top: 1px solid red !important;
+}
+
+#jumbotron {
+    background-image: url("https://r1.ilikewallpaper.net/ipad-pro-wallpapers/download/85961/abstract-pride-blue-4k-ipad-pro-wallpaper-ilikewallpaper_com.jpg");
+    margin-bottom: 0 !important;
+    box-shadow: 0 -4px 8px 8px #111 inset;
+}

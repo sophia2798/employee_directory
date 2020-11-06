@@ -64,26 +64,33 @@ class RowContainer extends Component {
         event.preventDefault();
         const inputVal = this.state.search;
         const filterArr = this.state.employees.filter(employee => employee.name.first.includes(inputVal) || employee.name.last.includes(inputVal));
-        this.setState({ filtered: filterArr });
+        this.setState({
+            filtered: filterArr,
+            search: ""
+        });
     };
 
     handleSeeAll = event => {
         event.preventDefault();
-        this.setState({ filtered: this.state.employees });
+        this.setState({
+            filtered: this.state.employees,
+            search: ""
+        });
     };
     
     render() {
         return (
             <div className="table-container">
+            <div className="fade-div"></div>
             <section className="dropdown_search">
-                <Sort handleSortByFirstName={this.handleSortByFirstName}
-                handleSortByLastName={this.handleSortByLastName}
-                handleSortByDate={this.handleSortByDate}
-                />
                 <Search 
                 handleInputChange = {this.handleInputChange}
                 search = {this.state.search}
                 handleFormSubmit = {this.handleFormSubmit}
+                />
+                <Sort handleSortByFirstName={this.handleSortByFirstName}
+                handleSortByLastName={this.handleSortByLastName}
+                handleSortByDate={this.handleSortByDate}
                 handleSeeAll = {this.handleSeeAll}
                 />
             </section>
