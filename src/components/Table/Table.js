@@ -7,7 +7,7 @@ import moment from "moment";
 class RowContainer extends Component {
     state = {
         employees: [],
-        nameSort: false
+        nameSort: true
     };
 
     componentDidMount() {
@@ -19,22 +19,19 @@ class RowContainer extends Component {
         .catch(err => console.log(err))
     };
 
-    handleSortByName = () => {
-        this.setState({ nameSort: !this.state.nameSort })
+    handleSortByFirstName = () => {
+        this.setState({ nameSort: true })
         if (this.state.nameSort) {
             const nameSortArr = this.state.employees.sort((a,b) => (a.name.first > b.name.first)?1 : -1);
             this.setState({ employees: nameSortArr });
-        } else {
-            function shuffle(arr) {
-                for (var i=0; i<arr.length; i++) {
-                    const rand = Math.floor(Math.random() * (i+1));
-                    const el = arr[i];
-                    arr[i] = arr[rand];
-                    arr[rand] = el;
-                }
-                return arr;
-            }
-            this.setState({ employees: shuffle(this.state.employees) });
+        }
+    };
+
+    handleSortByLastName = () => {
+        this.setState({ nameSort: true })
+        if (this.state.nameSort) {
+            const nameSortArr = this.state.employees.sort((a,b) => (a.name.last > b.name.last)?1 : -1);
+            this.setState({ employees: nameSortArr });
         }
     };
     
@@ -49,7 +46,8 @@ class RowContainer extends Component {
                         Name
                     </th>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a className="dropdown-item">Link</a>
+                        <a className="dropdown-item" onClick={this.handleSortByFirstName}>Sort by First</a>
+                        <a className="dropdown-item" onClick={this.handleSortByLastName}>Sort by Last</a>
                     </div>
                     <th>Phone</th>
                     <th>Email</th>
