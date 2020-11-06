@@ -97,7 +97,7 @@ class RowContainer extends Component {
             <table>
                 <thead>
                 <tr>
-                    <th>Image</th>
+                    <th style={{padding: "0 0.7rem"}}>Image</th>
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Email</th>

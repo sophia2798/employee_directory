@@ -12,7 +12,7 @@ function Sort(props) {
             <a className="dropdown-item" onClick={props.handleSortByLastName} href="#">Last Name</a>
             <a className="dropdown-item" onClick={props.handleSortByDate} href="#">D.O.B.</a>
         </div>
-        <button onClick={props.handleSeeAll} className="btn btn-success" id="see-all">
+        <button onClick={props.handleSeeAll} className="btn btn-secondary" id="see-all">
                     See All Employees
         </button>
     </div>

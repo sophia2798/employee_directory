@@ -4,7 +4,6 @@ table {
 }
 
 .dropdown_search {
-    padding: 0 1rem;
     margin-top: 1rem;
 }
 
@@ -16,4 +15,22 @@ table {
         /* rgba(37,37,37,0.61), */
         #111
     )
+}
+
+.table-container {
+    padding: 0 1rem;
+}
+
+th {
+    background-color: rgb(11,28,82);
+    border: 1px solid white;
+}
+
+td, th {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+table tr:nth-child(even) {
+    background-color: rgb(197,198,201,0.1);
 }
