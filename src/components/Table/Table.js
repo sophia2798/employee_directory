@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import Row from "../Row/Row";
 import "./Table.css";
+import Search from "../Search/Search";
+import Sort from "../Sort Btn/Sort";
 import API from "../../utils/API";
 import moment from "moment";
 
 class RowContainer extends Component {
     state = {
         employees: [],
-        nameSort: true
+        nameSort: true,
+        search: ""
     };
 
     componentDidMount() {
@@ -17,6 +20,14 @@ class RowContainer extends Component {
             this.setState({ employees: res.data.results });
         })
         .catch(err => console.log(err))
+    };
+
+    handleInputChange = event => {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            [name]: value
+        })
     };
 
     handleSortByFirstName = () => {
@@ -48,16 +59,10 @@ class RowContainer extends Component {
     render() {
         return (
             <div className="table-container">
-            <div className="dropdown">
-                <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Sort By
-                </button>
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a className="dropdown-item" onClick={this.handleSortByFirstName} href="#">First Name</a>
-                    <a className="dropdown-item" onClick={this.handleSortByLastName} href="#">Last Name</a>
-                    <a className="dropdown-item" onClick={this.handleSortByDate} href="#">D.O.B.</a>
-                </div>
-            </div>
+            <section className="dropdown_search">
+                <Sort handleSortByFirstName={this.handleSortByFirstName} handleSortByLastName={this.handleSortByLastName} handleSortByDate={this.handleSortByDate} />
+                <Search />
+            </section>
             <table>
                 <thead>
                 <tr>
