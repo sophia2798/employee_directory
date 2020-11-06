@@ -45,7 +45,12 @@ class RowContainer extends Component {
                 <thead>
                 <tr>
                     <th>Image</th>
-                    <th onClick={this.handleSortByName}> Name</th>
+                    <th className="dropdown-toggle" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Name
+                    </th>
+                    <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a className="dropdown-item">Link</a>
+                    </div>
                     <th>Phone</th>
                     <th>Email</th>
                     <th>DOB</th>
