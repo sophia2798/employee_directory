@@ -4,7 +4,7 @@ function Row(props) {
     return (
         <tr key={props.id}>
             <td>
-                <img src={props.image} alt={`${props.name} Profile Picture`} />
+                <img src={props.image} alt={props.name} />
             </td>
             <td>{props.name}</td>
             <td>{props.phone}</td>
