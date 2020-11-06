@@ -5,7 +5,15 @@ function Row(props) {
     return (
         <tr key={props.id} className="row-tr">
             <td>
-                <img src={props.image} alt={props.name} className="id-pic"/>
+                <img
+                src={props.image}
+                alt={props.name}
+                onClick={props.handleClick}
+                data_hidden={props.largeImage}
+                className="id-pic"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+                />
             </td>
             <td>{props.name}</td>
             <td>{props.phone}</td>

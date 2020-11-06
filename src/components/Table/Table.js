@@ -3,6 +3,7 @@ import Row from "../Row/Row";
 import "./Table.css";
 import Search from "../Search/Search";
 import Sort from "../Sort Btn/Sort";
+import Modal from "../Modal/Modal";
 import API from "../../utils/API";
 import moment from "moment";
 
@@ -11,7 +12,8 @@ class RowContainer extends Component {
         employees: [],
         filtered: [],
         nameSort: true,
-        search: ""
+        search: "",
+        modal: {},
     };
 
     componentDidMount() {
@@ -77,6 +79,17 @@ class RowContainer extends Component {
             search: ""
         });
     };
+
+    handleClick = (e) => {
+        // e.preventDefault();
+        console.log(e.target.alt);
+        this.setState({
+            modal: {
+                url: e.target.getAttribute("data_hidden"),
+                alt: e.target.alt
+            }
+        });
+    };
     
     render() {
         return (
@@ -107,11 +120,12 @@ class RowContainer extends Component {
                 <tbody>
                 {this.state.filtered.map(employee => {
                     return (
-                        <Row id={employee.id.value} name={`${employee.name.first} ${employee.name.last}`} email={employee.email} phone={employee.phone} image={employee.picture.thumbnail} dob={moment(employee.dob.date).format('L')}/>
+                        <Row handleClick={this.handleClick} largeImage={employee.picture.large} id={employee.id.value} name={`${employee.name.first} ${employee.name.last}`} email={employee.email} phone={employee.phone} image={employee.picture.thumbnail} dob={moment(employee.dob.date).format('L')}/>
                     )
                 })}
                 </tbody>
             </table>
+            <Modal imageLg={this.state.modal.url} name={this.state.modal.alt} title={this.state.modal.alt} />
             </div>
         )
     }
