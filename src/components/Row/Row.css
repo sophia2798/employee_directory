@@ -5,3 +5,11 @@
 .id-pic {
     border-radius: 5px;
 }
+
+a {
+    color: white
+}
+
+a:hover {
+    color: rgb(177,177,179)
+}
