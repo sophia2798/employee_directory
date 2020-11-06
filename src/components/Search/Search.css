@@ -12,8 +12,13 @@ form {
     margin-left: 1rem;
 }
 
-#search {
+#search, #searchbtn {
     margin-left: 0.5rem;
+}
+
+#searchbtn:hover {
+    background-color: rgb(143,10,10);
+    border: 1px solid rgb(143,10,10);
 }
 
 @media only screen and (min-width: 875px) {
