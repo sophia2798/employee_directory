@@ -9,6 +9,7 @@ import moment from "moment";
 class RowContainer extends Component {
     state = {
         employees: [],
+        filtered: [],
         nameSort: true,
         search: ""
     };
@@ -17,7 +18,10 @@ class RowContainer extends Component {
         API.search()
         .then(res => {
             // console.log(res.data.results);
-            this.setState({ employees: res.data.results });
+            this.setState({
+                employees: res.data.results,
+                filtered: res.data.results
+            });
         })
         .catch(err => console.log(err))
     };
@@ -34,7 +38,7 @@ class RowContainer extends Component {
         this.setState({ nameSort: true })
         if (this.state.nameSort) {
             const nameSortArr = this.state.employees.sort((a,b) => (a.name.first > b.name.first)?1 : -1);
-            this.setState({ employees: nameSortArr });
+            this.setState({ filtered: nameSortArr });
         }
     };
 
@@ -42,7 +46,7 @@ class RowContainer extends Component {
         this.setState({ nameSort: true })
         if (this.state.nameSort) {
             const nameSortArr = this.state.employees.sort((a,b) => (a.name.last > b.name.last)?1 : -1);
-            this.setState({ employees: nameSortArr });
+            this.setState({ filtered: nameSortArr });
         }
     };
 
@@ -52,16 +56,36 @@ class RowContainer extends Component {
             const dateSortArr = this.state.employees.sort((a,b) => {
                 return a.dob.date < b.dob.date? -1 : a.dob.date > b.dob.date ? 1 : 0;
             })
-            this.setState({ employees: dateSortArr });
+            this.setState({ filtered: dateSortArr });
         }
+    };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        const inputVal = this.state.search;
+        const filterArr = this.state.employees.filter(employee => employee.name.first.includes(inputVal) || employee.name.last.includes(inputVal));
+        this.setState({ filtered: filterArr });
+    };
+
+    handleSeeAll = event => {
+        event.preventDefault();
+        this.setState({ filtered: this.state.employees });
     };
     
     render() {
         return (
             <div className="table-container">
             <section className="dropdown_search">
-                <Sort handleSortByFirstName={this.handleSortByFirstName} handleSortByLastName={this.handleSortByLastName} handleSortByDate={this.handleSortByDate} />
-                <Search />
+                <Sort handleSortByFirstName={this.handleSortByFirstName}
+                handleSortByLastName={this.handleSortByLastName}
+                handleSortByDate={this.handleSortByDate}
+                />
+                <Search 
+                handleInputChange = {this.handleInputChange}
+                search = {this.state.search}
+                handleFormSubmit = {this.handleFormSubmit}
+                handleSeeAll = {this.handleSeeAll}
+                />
             </section>
             <table>
                 <thead>
@@ -74,7 +98,7 @@ class RowContainer extends Component {
                 </tr>
                 </thead>
                 <tbody>
-                {this.state.employees.map(employee => {
+                {this.state.filtered.map(employee => {
                     return (
                         <Row id={employee.id.value} name={`${employee.name.first} ${employee.name.last}`} email={employee.email} phone={employee.phone} image={employee.picture.thumbnail} dob={moment(employee.dob.date).format('L')}/>
                     )

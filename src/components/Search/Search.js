@@ -18,6 +18,9 @@ function Search(props) {
                 <button onClick={props.handleFormSubmit} className="btn btn-primary mt-3">
                     Search
                 </button>
+                <button onClick={props.handleSeeAll} className="btn btn-primary mt-3">
+                    See All Employees
+                </button>
             </div>
         </form>
     )
