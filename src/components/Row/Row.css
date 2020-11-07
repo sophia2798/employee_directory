@@ -13,3 +13,9 @@ a {
 a:hover {
     color: rgb(177,177,179)
 }
+
+@media only screen and (max-width: 712px) {
+    td {
+        font-size: 14px;
+    }
+}
