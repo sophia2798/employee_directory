@@ -8,7 +8,7 @@ This application utilizes React to create the frontend portion, the axios packag
 
     npx create-react-app <app-name>
 
-![alt-text](./readme_media/demo.gif "Demo Gif")
+![alt-text](./assets/demo.gif "Demo Gif")
 
 ## Table Of Contents
 - [Access and Installation](#Access-and-Installation)
@@ -27,7 +27,7 @@ No external software or servers are necessary to install this project except for
 This project can be accessed by either cloning the repository from GitHub or by visiting the deployed Heroku page.
 
 - [GitHub Repository](https://github.com/sophia2798/employee_directory)
-- [Deployed Page](https://sj-burger-logger.herokuapp.com/)
+- [Deployed Page](https://sj-employee-directory.herokuapp.com/)
 
 To open and edit code files, you will need a text editor. The one used to create this page was Visual Studio Code (https://code.visualstudio.com/).
 
