@@ -10,7 +10,10 @@ function Modal(props) {
             <h5 class="modal-title" id="exampleModalLongTitle">{props.title}</h5>
             </div>
             <div className="modal-body">
-                <img src={props.imageLg} alt={props.name} style={{height: 200}}/>
+                <img id="modal-img" src={props.imageLg} alt={props.name} />
+                <p><strong>Phone Number: </strong>{props.phone}</p>
+                <p><strong>Email: </strong><a id="modal-a" href={`mailto:${props.email}`}>{props.email}</a></p>
+                <p><strong>Birthday: </strong>{props.dob}</p>
             </div>
             <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

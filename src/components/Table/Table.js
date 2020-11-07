@@ -85,7 +85,10 @@ class RowContainer extends Component {
         console.log(e.target.alt);
         this.setState({
             modal: {
-                url: e.target.getAttribute("data_hidden"),
+                url: e.target.getAttribute("data_image"),
+                phone: e.target.getAttribute("data_phone"),
+                email: e.target.getAttribute("data_email"),
+                dob: e.target.getAttribute("data_dob"),
                 alt: e.target.alt
             }
         });
@@ -120,12 +123,23 @@ class RowContainer extends Component {
                 <tbody>
                 {this.state.filtered.map(employee => {
                     return (
-                        <Row handleClick={this.handleClick} largeImage={employee.picture.large} id={employee.id.value} name={`${employee.name.first} ${employee.name.last}`} email={employee.email} phone={employee.phone} image={employee.picture.thumbnail} dob={moment(employee.dob.date).format('L')}/>
+                        <Row
+                        handleClick={this.handleClick} largeImage={employee.picture.large} id={employee.id.value}
+                        name={`${employee.name.first}
+                        ${employee.name.last}`}
+                        email={employee.email}
+                        emailAttr={employee.email}
+                        phone={employee.phone}
+                        phoneAttr={employee.phone}
+                        image={employee.picture.thumbnail}
+                        dob={moment(employee.dob.date).format('L')}
+                        dobAttr={moment(employee.dob.date).format('MMMM Do YYYY')}
+                        />
                     )
                 })}
                 </tbody>
             </table>
-            <Modal imageLg={this.state.modal.url} name={this.state.modal.alt} title={this.state.modal.alt} />
+            <Modal imageLg={this.state.modal.url} name={this.state.modal.alt} title={this.state.modal.alt} phone={this.state.modal.phone} email={this.state.modal.email} dob={this.state.modal.dob} />
             </div>
         )
     }

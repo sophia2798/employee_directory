@@ -9,7 +9,10 @@ function Row(props) {
                 src={props.image}
                 alt={props.name}
                 onClick={props.handleClick}
-                data_hidden={props.largeImage}
+                data_image={props.largeImage}
+                data_phone={props.phoneAttr}
+                data_email={props.emailAttr}
+                data_dob={props.dobAttr}
                 className="id-pic"
                 data-toggle="modal"
                 data-target="#exampleModalCenter"

@@ -2,3 +2,15 @@
     color: black;
     margin: 0 auto;
 }
+
+.modal-body {
+    color: black;
+}
+
+#modal-a {
+    color: black;
+}
+
+#modal-img {
+    margin-bottom: 1rem;
+}
