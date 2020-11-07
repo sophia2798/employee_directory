@@ -103,6 +103,9 @@ class RowContainer extends Component {
                 handleInputChange = {this.handleInputChange}
                 search = {this.state.search}
                 handleFormSubmit = {this.handleFormSubmit}
+                list = {this.state.employees.map(employee => (
+                    <option value={`${employee.name.first} ${employee.name.last}`} />
+                ))}
                 />
                 <Sort handleSortByFirstName={this.handleSortByFirstName}
                 handleSortByLastName={this.handleSortByLastName}

@@ -14,7 +14,11 @@ function Search(props) {
                     className="form-control"
                     placeholder="Search by Name"
                     id="search"
+                    list="name-list"
                 />
+                <datalist id="name-list">
+                    {props.list}
+                </datalist>
                 <button onClick={props.handleFormSubmit} className="btn btn-danger" id="searchbtn">
                     Search
                 </button>
